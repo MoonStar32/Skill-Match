@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class TestChooseScreen extends StatefulWidget {
-  const TestChooseScreen({super.key});
+  const TestChooseScreen({
+    super.key,
+  });
 
   @override
   State<TestChooseScreen> createState() => _TestChooseScreenState();
@@ -15,7 +17,9 @@ class _TestChooseScreenState extends State<TestChooseScreen> {
         centerTitle: true,
         title: const Text('Выберите тест'),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
+          icon: const Icon(
+            Icons.arrow_back_ios,
+          ),
           onPressed: () => Navigator.pop(context),
         ),
       ),

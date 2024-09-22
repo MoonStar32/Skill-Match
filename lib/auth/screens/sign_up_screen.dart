@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:skill_match/auth/screens/exstra_data_of_user.dart';
-
-import '../../components/common_button.dart';
-import '../../components/text_field.dart';
+import 'package:skill_match/components/common_button.dart';
+import 'package:skill_match/components/text_field.dart';
 
 class SignUpScreen extends StatefulWidget {
   final VoidCallback showSignInPage;
-  const SignUpScreen({super.key, required this.showSignInPage});
+  const SignUpScreen({
+    super.key,
+    required this.showSignInPage,
+  });
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
@@ -25,10 +27,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
             email: _emailController.text.trim(),
             password: _passwordController.text.trim(),
           )
-          .whenComplete(() =>
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return const ExtraData();
-              })));
+          .whenComplete(
+            () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return const ExtraData();
+                },
+              ),
+            ),
+          );
     }
   }
 
@@ -57,7 +65,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
         child: Scaffold(
           floatingActionButton: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 38),
-            child: CommonButton(onTap: signUp, text: 'Sign Up'.toUpperCase()),
+            child: CommonButton(
+              onTap: signUp,
+              text: 'Sign Up'.toUpperCase(),
+            ),
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
@@ -74,25 +85,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(
-                          width: 320,
-                          child: Text(
-                            'Добро пожаловать!',
-                            maxLines: 2,
-                            style: TextStyle(
-                              fontSize: 48,
-                              color: Color(0xFF6949FF),
-                              fontWeight: FontWeight.w700,
-                            ),
-                          )),
+                        width: 320,
+                        child: Text(
+                          'Добро пожаловать!',
+                          maxLines: 2,
+                          style: TextStyle(
+                            fontSize: 48,
+                            color: Color(0xFF6949FF),
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
                       const SizedBox(
                         height: 10,
                       ),
                       const Text(
                         'New users are always welcome!',
                         style: TextStyle(
-                            fontSize: 14,
-                            color: Color(0xFFA59BD1),
-                            fontWeight: FontWeight.w700),
+                          fontSize: 14,
+                          color: Color(0xFFA59BD1),
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                       const SizedBox(
                         height: 30,
@@ -100,9 +113,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       const Text(
                         'Already a member?',
                         style: TextStyle(
-                            fontSize: 13,
-                            color: Color(0xFFA59BD1),
-                            fontWeight: FontWeight.w700),
+                          fontSize: 13,
+                          color: Color(0xFFA59BD1),
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                       const SizedBox(
                         height: 10,
@@ -120,9 +134,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           child: const Text(
                             'Войти',
                             style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 14),
+                              color: Colors.white,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 14,
+                            ),
                           ),
                         ),
                       ),
@@ -135,9 +150,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Column(
                   children: [
                     ComonTextField(
-                        icon: Icons.perm_identity_rounded,
-                        hintText: "email",
-                        controller: _emailController),
+                      icon: Icons.perm_identity_rounded,
+                      hintText: "email",
+                      controller: _emailController,
+                    ),
                     const SizedBox(
                       height: 40,
                     ),

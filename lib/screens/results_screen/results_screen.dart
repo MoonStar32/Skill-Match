@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class ResultScreen extends StatefulWidget {
-  ResultScreen({
+  final double score;
+
+  const ResultScreen({
     super.key,
     required this.score,
   });
-  double score;
 
   @override
   State<ResultScreen> createState() => _ResultScreenState();

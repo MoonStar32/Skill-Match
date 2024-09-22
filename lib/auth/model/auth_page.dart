@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import '../screens/sign_in_screen.dart';
-import '../screens/sign_up_screen.dart';
+import 'package:skill_match/auth/screens/sign_in_screen.dart';
+import 'package:skill_match/auth/screens/sign_up_screen.dart';
 
 class AuthPage extends StatefulWidget {
-  const AuthPage({super.key});
+  const AuthPage({
+    super.key,
+  });
 
   @override
   State<AuthPage> createState() => _AuthPageState();
 }
 
 class _AuthPageState extends State<AuthPage> {
-
   bool showLoginPage = true;
 
-  void toggleScreens () {
+  void toggleScreens() {
     setState(() {
       showLoginPage = !showLoginPage;
     });

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_countdown_timer/index.dart';
 import 'package:skill_match/screens/results_screen/results_screen.dart';
 import 'package:skill_match/screens/test_screens/front_end_test_screen/front_end_test_screen_model.dart';
 
 //TODO
 class FrontEndTestScreen extends StatefulWidget {
-  const FrontEndTestScreen({super.key});
+  const FrontEndTestScreen({
+    super.key,
+  });
 
   @override
   State<FrontEndTestScreen> createState() => _FrontEndTestScreenState();
@@ -23,7 +24,10 @@ class _FrontEndTestScreenState extends State<FrontEndTestScreen> {
   @override
   void initState() {
     super.initState();
-    timerController = CountdownTimerController(endTime: endTime, onEnd: onEnd);
+    timerController = CountdownTimerController(
+      endTime: endTime,
+      onEnd: onEnd,
+    );
     _controller = PageController(initialPage: 0);
   }
 
@@ -120,24 +124,32 @@ class _FrontEndTestScreenState extends State<FrontEndTestScreen> {
             SizedBox(
               height: 20,
               child: TextButton(
-                  onPressed: countScore,
-                  child: const Text(
-                    'Запринтить длину вопросов в теме',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  )),
+                onPressed: countScore,
+                child: const Text(
+                  'Запринтить длину вопросов в теме',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 20),
               child: Center(
                 child: Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border:
-                          Border.all(color: const Color(0xff6949FF), width: 3)),
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: const Color(0xff6949FF),
+                      width: 3,
+                    ),
+                  ),
                   width: 340,
                   child: LinearProgressIndicator(
-                    valueColor:
-                        const AlwaysStoppedAnimation<Color>(Colors.green),
+                    valueColor: const AlwaysStoppedAnimation<Color>(
+                      Colors.green,
+                    ),
                     minHeight: 8,
                     value: questionNumber / allQuestions[topicsIndex].length,
                     backgroundColor: Colors.white,
@@ -163,8 +175,9 @@ class _FrontEndTestScreenState extends State<FrontEndTestScreen> {
                         content: Container(),
                         actions: [
                           TextButton(
-                              onPressed: navigateToResult,
-                              child: const Text('Перейти к результатам теста'))
+                            onPressed: navigateToResult,
+                            child: const Text('Перейти к результатам теста'),
+                          )
                         ],
                       );
                     }
@@ -205,7 +218,6 @@ class _FrontEndTestScreenState extends State<FrontEndTestScreen> {
                               itemBuilder: (context, index) {
                                 final question =
                                     allQuestions[topicsIndex][index];
-
                                 return buildQuestion(question);
                               },
                             ),
@@ -242,9 +254,11 @@ class _FrontEndTestScreenState extends State<FrontEndTestScreen> {
                                           alignment: Alignment.center,
                                           children: [
                                             Image.asset(
-                                                'assets/icons/purple_fon.png'),
+                                              'assets/icons/purple_fon.png',
+                                            ),
                                             Image.asset(
-                                                'assets/icons/whie_fon_home.png'),
+                                              'assets/icons/whie_fon_home.png',
+                                            ),
                                             // Image.asset(
                                             //     'assets/icons/home_icon.png'),
                                             const Icon(
@@ -261,7 +275,8 @@ class _FrontEndTestScreenState extends State<FrontEndTestScreen> {
                                             shape: BoxShape.circle,
                                           ),
                                           child: Image.asset(
-                                              'assets/icons/icon_back_arrow.png'),
+                                            'assets/icons/icon_back_arrow.png',
+                                          ),
                                         ),
                                 ),
                                 IconButton(
@@ -297,7 +312,8 @@ class _FrontEndTestScreenState extends State<FrontEndTestScreen> {
                                       shape: BoxShape.circle,
                                     ),
                                     child: Image.asset(
-                                        'assets/icons/icon_forward_arrow.png'),
+                                      'assets/icons/icon_forward_arrow.png',
+                                    ),
                                   ),
                                 ),
                               ],
@@ -310,9 +326,10 @@ class _FrontEndTestScreenState extends State<FrontEndTestScreen> {
                           child: Text(
                             "$questionNumber/${allQuestions[topicsIndex].length}",
                             style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500),
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
                       ],
@@ -387,7 +404,12 @@ class OptionWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: question.options
-              .map((option) => buildOption(context, option))
+              .map(
+                (option) => buildOption(
+                  context,
+                  option,
+                ),
+              )
               .toList(),
         ),
       ),

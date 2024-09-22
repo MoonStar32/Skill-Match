@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 class CommonButton extends StatelessWidget {
-  const CommonButton(
-      {super.key, required, required this.onTap, required this.text});
+  const CommonButton({
+    super.key,
+    required,
+    required this.onTap,
+    required this.text,
+  });
 
   final void Function() onTap;
   final String text;
@@ -15,8 +19,9 @@ class CommonButton extends StatelessWidget {
         alignment: Alignment.center,
         height: 56,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(24),
-            color: const Color(0xFF6949FF)),
+          borderRadius: BorderRadius.circular(24),
+          color: const Color(0xFF6949FF),
+        ),
         child: Text(
           text,
           style: const TextStyle(

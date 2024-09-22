@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import '../../components/common_button.dart';
-import '../../components/text_field.dart';
+import 'package:skill_match/components/common_button.dart';
+import 'package:skill_match/components/text_field.dart';
 
 class ForgotPaswordScreen extends StatefulWidget {
   const ForgotPaswordScreen({
@@ -26,8 +25,9 @@ class _ForgotPaswordScreenState extends State<ForgotPaswordScreen> {
 
   Future passwordReset() async {
     try {
-      await FirebaseAuth.instance
-          .sendPasswordResetEmail(email: _emailController.text.trim());
+      await FirebaseAuth.instance.sendPasswordResetEmail(
+        email: _emailController.text.trim(),
+      );
       setState(() {
         statusMessage = 'Link sent successfully!';
         statusColor = Colors.green;
@@ -45,7 +45,9 @@ class _ForgotPaswordScreenState extends State<ForgotPaswordScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 25),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 25,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -56,13 +58,17 @@ class _ForgotPaswordScreenState extends State<ForgotPaswordScreen> {
             Padding(
               padding: const EdgeInsets.only(top: 250, bottom: 10),
               child: ComonTextField(
-                  icon: Icons.email,
-                  hintText: 'example@gmail.com',
-                  controller: _emailController),
+                icon: Icons.email,
+                hintText: 'example@gmail.com',
+                controller: _emailController,
+              ),
             ),
             Text(
               statusMessage,
-              style: TextStyle(fontSize: 16, color: statusColor),
+              style: TextStyle(
+                fontSize: 16,
+                color: statusColor,
+              ),
               textAlign: TextAlign.center,
             ),
           ],
@@ -70,7 +76,10 @@ class _ForgotPaswordScreenState extends State<ForgotPaswordScreen> {
       ),
       floatingActionButton: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25),
-        child: CommonButton(onTap: passwordReset, text: 'Send Link'),
+        child: CommonButton(
+          onTap: passwordReset,
+          text: 'Send Link',
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );

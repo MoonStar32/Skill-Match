@@ -21,8 +21,8 @@ class Option {
 
 final allQuestions = [
   basicsQuestions,
-  JSQuestions,
-  SPAQuestions,
+  jSQuestions,
+  sPAQuestions,
   endQuestions,
 ];
 
@@ -100,7 +100,7 @@ final basicsQuestions = [
   ),
 ];
 
-final JSQuestions = [
+final jSQuestions = [
   Question(
     text: 'Выберите корректные способы создания объекта в JS.',
     options: [
@@ -224,7 +224,7 @@ final JSQuestions = [
   ),
 ];
 
-final SPAQuestions = [
+final sPAQuestions = [
   Question(
     text: 'Какие алгоритмы использует Ангуляр?',
     options: [

@@ -18,7 +18,10 @@ class GetUserDirection extends StatelessWidget {
               snapshot.data!.data() as Map<String, dynamic>;
           return Text(
             '${data['direction']}',
-            style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+            style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w500,
+            ),
           );
         }
         return const Text('Loading...');

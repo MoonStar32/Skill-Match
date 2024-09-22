@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:skill_match/components/common_button.dart';
+import 'package:skill_match/components/text_field.dart';
 import 'package:skill_match/home_page.dart';
-
-import '../../components/common_button.dart';
-import '../../components/text_field.dart';
 
 class ExtraData extends StatefulWidget {
   const ExtraData({
@@ -22,7 +21,7 @@ class _ExtraDataState extends State<ExtraData> {
   String? direction;
   String? lvl;
   final contactController = TextEditingController();
-  var value;
+  late final String value;
 
   @override
   void dispose() {
@@ -42,9 +41,10 @@ class _ExtraDataState extends State<ExtraData> {
         child: Text(
           item,
           style: const TextStyle(
-              color: Color(0xFF333333),
-              fontSize: 14,
-              fontWeight: FontWeight.w600),
+            color: Color(0xFF333333),
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       );
 
@@ -57,31 +57,44 @@ class _ExtraDataState extends State<ExtraData> {
           floatingActionButton: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: CommonButton(
-                onTap: () async {
-                  try {
-                    await FirebaseFirestore.instance.collection('users').add({
+              onTap: () async {
+                try {
+                  await FirebaseFirestore.instance.collection('users').add(
+                    {
                       'first name': firstNameController.text.trim(),
                       'last name': lastNameController.text.trim(),
                       'about me': aboutMeController.text.trim(),
                       'contacts': contactController.text.trim(),
                       'direction': direction!,
-                    }).whenComplete(() => print(''));
-                  } catch (e) {
-                    print(e);
-                  }
+                    },
+                  ).whenComplete(
+                    () => print(''),
+                  );
+                } catch (e) {
+                  print(e);
+                }
 
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return const HomePage();
-                  }));
-                },
-                text: 'Приступить к тестам'),
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const HomePage();
+                    },
+                  ),
+                );
+              },
+              text: 'Приступить к тестам',
+            ),
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
           backgroundColor: Colors.transparent,
           body: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 60),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 25,
+                vertical: 60,
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -94,70 +107,71 @@ class _ExtraDataState extends State<ExtraData> {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-
                   const SizedBox(
                     height: 40,
                   ),
-
                   ComonTextField(
-                      icon: Icons.perm_identity_rounded,
-                      hintText: "Имя",
-                      controller: firstNameController),
-
+                    icon: Icons.perm_identity_rounded,
+                    hintText: "Имя",
+                    controller: firstNameController,
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
-
                   ComonTextField(
-                      icon: Icons.lock_outline,
-                      hintText: 'Фамилия',
-                      controller: lastNameController),
-
+                    icon: Icons.lock_outline,
+                    hintText: 'Фамилия',
+                    controller: lastNameController,
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
-
                   ComonTextField(
-                      icon: Icons.lock_open_outlined,
-                      hintText: 'Обо мне',
-                      controller: aboutMeController),
-
+                    icon: Icons.lock_open_outlined,
+                    hintText: 'Обо мне',
+                    controller: aboutMeController,
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
-
                   ComonTextField(
-                      icon: Icons.lock_outline,
-                      hintText: 'Контакты',
-                      controller: contactController),
-
+                    icon: Icons.lock_outline,
+                    hintText: 'Контакты',
+                    controller: contactController,
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
-
                   Container(
                     alignment: Alignment.center,
                     height: 60,
                     decoration: const BoxDecoration(
-                        color: Colors.transparent,
-                        border: Border(
-                            bottom: BorderSide(
-                                width: 2, color: Color(0xFF6949FF)))),
+                      color: Colors.transparent,
+                      border: Border(
+                        bottom: BorderSide(
+                          width: 2,
+                          color: Color(0xFF6949FF),
+                        ),
+                      ),
+                    ),
                     child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 0),
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton<String>(
-                            hint: const Text('Back, Front ...'),
-                            dropdownColor: Colors.white,
-                            value: value,
-                            isExpanded: true,
-                            items: itemsDir.map(buidlMenuItem).toList(),
-                            onChanged: (value) => setState(() {
-                              this.value = value;
+                      padding: const EdgeInsets.symmetric(horizontal: 0),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton<String>(
+                          hint: const Text('Back, Front ...'),
+                          dropdownColor: Colors.white,
+                          value: value,
+                          isExpanded: true,
+                          items: itemsDir.map(buidlMenuItem).toList(),
+                          onChanged: (value) => setState(
+                            () {
+                              this.value = value!;
                               direction = value;
-                            }),
+                            },
                           ),
-                        )),
+                        ),
+                      ),
+                    ),
                   ),
 
                   // const SizedBox(height: 20,),
